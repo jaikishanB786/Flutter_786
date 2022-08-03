@@ -8,7 +8,7 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   String name = "";
-  bool ChangeButton = false;
+  bool changeButton = false;
 
   // const LoginPage({Key? key}) : super(key: key);
   @override
@@ -26,7 +26,7 @@ class _LoginPageState extends State<LoginPage> {
               height: 20.0,
             ),
             Text(
-              "Welcome",
+              "Welcome $name",
               style: TextStyle(
                 fontSize: 28,
                 fontWeight: FontWeight.bold,
@@ -65,7 +65,7 @@ class _LoginPageState extends State<LoginPage> {
                   InkWell(
                     onTap: () async {
                       setState(() {
-                        ChangeButton = true;
+                        changeButton = true;
                       });
 
                       await Future.delayed(Duration(seconds: 1));
@@ -73,10 +73,10 @@ class _LoginPageState extends State<LoginPage> {
                     },
                     child: AnimatedContainer(
                       duration: Duration(seconds: 1),
-                      width: ChangeButton ? 50 : 150,
+                      width: changeButton ? 50 : 150,
                       height: 50,
                       alignment: Alignment.center,
-                      child: ChangeButton
+                      child: changeButton
                           ? Icon(
                               Icons.done,
                               color: Colors.white,
@@ -92,7 +92,7 @@ class _LoginPageState extends State<LoginPage> {
                       decoration: BoxDecoration(
                         color: Colors.deepPurple,
                         // shape: ChangeButton ? BoxShape.circle : BoxShape.rectangle,
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(changeButton ? 50 : 8),
                       ),
                     ),
                   ),
